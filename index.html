@@ -3,24 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Video</title>
+    <title>Live Video Stream</title>
+    <!-- Include HLS.js library -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <h1>Live Video Stream</h1>
-    <video id="liveVideo" controls autoplay width="640" height="360"></video>
-
+    <video id="liveVideo" controls autoplay muted></video>
     <script>
         const video = document.getElementById('liveVideo');
-        const videoSrc = 'https://criccoder264.pages.dev/Astro';
+        const videoSrc = 'https://criccoder264.pages.dev/Astro'; // Replace with your live stream URL
 
         if (Hls.isSupported()) {
+            // Use hls.js for compatibility
             const hls = new Hls();
             hls.loadSource(videoSrc);
             hls.attachMedia(video);
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Native HLS support (e.g., Safari)
             video.src = videoSrc;
         } else {
+            // Fallback for unsupported browsers
             alert('Your browser does not support live streaming.');
         }
     </script>
