@@ -3,43 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Video Stream</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-        video {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ccc;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Live Video Stream</h1>
-    <video id="liveVideo" controls autoplay muted></video>
-    <script>
-        const video = document.getElementById('liveVideo');
-        const videoSrc = 'https://criccoder264.pages.dev/Astro'; // Replace if you have a direct video file URL
-
-        if (Hls.isSupported()) {
-            const hls = new Hls();
-            hls.loadSource(videoSrc);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.ERROR, function (event, data) {
-                console.error('HLS.js Error:', data);
-                alert(`Error: ${data.type} - ${data.details}`);
-            });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = videoSrc;
-        } else {
-            alert('Your browser does not support live streaming.');
-        }
-    </script>
+        <video src="https://t.me/+nxhOTj9euPs2MGNl">
+        <source src="https://cricnation.live/p2?id=18Khel">
+    </video>
 </body>
-</html>
-
