@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Video</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+    <h1>Live Video Stream</h1>
+    <video id="liveVideo" controls autoplay width="640" height="360"></video>
+
+    <script>
+        const video = document.getElementById('liveVideo');
+        const videoSrc = 'https://criccoder264.pages.dev/Astro';
+
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = videoSrc;
+        } else {
+            alert('Your browser does not support live streaming.');
+        }
+    </script>
+</body>
+</html>
