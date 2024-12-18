@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Video Stream</title>
-    <!-- Include HLS.js library -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         body {
@@ -25,18 +24,19 @@
     <video id="liveVideo" controls autoplay muted></video>
     <script>
         const video = document.getElementById('liveVideo');
-        const videoSrc = 'https://cricnation.live/p2?id=18Khel'; // Replace with your live stream URL
+        const videoSrc = 'https://criccoder264.pages.dev/Astro'; // Replace with your live stream URL
 
         if (Hls.isSupported()) {
-            // Use hls.js for compatibility
             const hls = new Hls();
             hls.loadSource(videoSrc);
             hls.attachMedia(video);
+            hls.on(Hls.Events.ERROR, function (event, data) {
+                console.error('HLS.js Error:', data);
+                alert(`Error: ${data.type} - ${data.details}`);
+            });
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            // Native HLS support (e.g., Safari)
             video.src = videoSrc;
         } else {
-            // Fallback for unsupported browsers
             alert('Your browser does not support live streaming.');
         }
     </script>
